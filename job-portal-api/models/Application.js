@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const applicationSchema = new mongoose.Schema({
-    canditate: {
+    candidate: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',
         required: true
@@ -34,7 +34,7 @@ const applicationSchema = new mongoose.Schema({
 // Preventing duplicate applications
 
 applicationSchema.index(
-    { canditate: 1, job: 1},
+    { candidate: 1, job: 1},
     { unique: true }
 )
 
