@@ -145,3 +145,26 @@ exports.updateApplicationStatus = async (req, res) => {
     });
   }
 };
+
+exports.getApplicationById = async (req, res) => {
+    try {
+        const application = await Application.findById(req.params.id).populate('job');
+
+        if (!application) {
+            return res.status(404).json({
+                success: false,
+                message: 'Application not found'
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            data: application
+        });
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            message: error.message
+        });
+    }
+};
