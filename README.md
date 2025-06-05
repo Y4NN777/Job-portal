@@ -112,9 +112,11 @@ job-portal-api/
 - DELETE /api/jobs/:id - Delete job
 
 ### Applications
-- POST /api/applications - Submit application
-- GET /api/applications - Get user applications
-- PUT /api/applications/:id - Update application status
+- POST /api/applications - Submit application (Requires: candidate)
+- GET /api/applications/my - Get user applications (Requires: candidate)
+- GET /api/applications/job/:jobId - Get applications for job (Requires: recruiter/admin)
+- GET /api/applications/:id - Get application by ID (Requires: recruiter/admin)
+- PUT /api/applications/:id - Update application status (Requires: recruiter/admin)
 
 ## Upcoming Features (Frontend)
 - Modern, responsive UI built with React and TypeScript
