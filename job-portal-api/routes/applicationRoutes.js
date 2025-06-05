@@ -3,7 +3,8 @@ const {
   applyToJob,
   getMyApplications,
   getApplicationsForJob,
-  updateApplicationStatus
+  updateApplicationStatus,
+  getApplicationById
 } = require('../controllers/applicationController');
 const { protect, authorize } = require('../middlewares/auth');
 
@@ -14,6 +15,7 @@ router.route('/')
 
 router.get('/my', protect, authorize('candidate'), getMyApplications);
 router.get('/job/:jobId', protect, authorize('recruiter', 'admin'), getApplicationsForJob);
+router.get('/:id',protect, authorize('recruiter', 'admin','candidate'), getApplicationById);
 router.put('/:id', protect, authorize('recruiter', 'admin'), updateApplicationStatus);
 
 module.exports = router;
