@@ -16,7 +16,7 @@ router.route('/')
 
 router.route('/:id')
   .get(getJobById)
-  .put(protect, authorize('recruiter', 'admin'), updateJob)
+  .patch(protect, authorize('recruiter', 'admin'), updateJob)
   .delete(protect, authorize('recruiter', 'admin'), deleteJob);
 
 module.exports = router;
